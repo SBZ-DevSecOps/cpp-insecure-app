@@ -1,6 +1,12 @@
+# conanfile.txt (Conan 2.x) — INTENTIONAL SCA DEMO
 [requires]
-libcurl/7.76.1   # CVE-2021-22901: use-after-free (7.75.0–7.76.1)
+libcurl/7.80.0
+
+[options]
+libcurl/*:with_ssl=schannel   # Windows native SSL
+libcurl/*:with_zlib=False
 
 [generators]
 CMakeDeps
 CMakeToolchain
+

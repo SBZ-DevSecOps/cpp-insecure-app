@@ -1,0 +1,9 @@
+{
+    "version": "0.5",
+    "requires": [
+        "libcurl/7.80.0#e3b92742648127d7495a996af36dd29f%1717082899.289"
+    ],
+    "build_requires": [],
+    "python_requires": [],
+    "config_requires": []
+}
