@@ -1,0 +1,30 @@
+libcurl 7.75.0–7.76.1 est affecté par un use-after-free (CVE-2021-22901). Cela suffit généralement à faire remonter une alerte SCA même si vous ne liez pas réellement contre la lib (les outils lisent le manifest Conan). 
+
+Build & run
+cd cpp-insecure-app
+cmake -S . -B build
+cmake --build build
+./build/insecure_cpp
+
+Findings attendus (exemples)
+CWE-78, CWE-120/121, CWE-134, CWE-415, CWE-416, CWE-457, CWE-377, CWE-798.
+(SCA si vous gardez conanfile.txt : CVE-2021-22901 libcurl 7.76.1).
+CWE-732, CWE-330, CWE-401, CWE-786, CWE-22, etc.
+
+Scans rapides (exemples)
+- Snyk Open Source (SCA)
+	- Python : snyk test --file=requirements.txt
+	- C++ (Conan) : snyk test --file=conanfile.txt ; unmanaged : snyk test --unmanaged 
+- Snyk Code / Semgrep (SAST)
+	- snyk code test .
+	- semgrep ci (ou semgrep --config p/ci)
+- JFrog Xray (CLI)
+	- jf audit --pip --requirements-file=requirements.txt (ou intégration CI) 
+
+
+
+Notes utiles (références)
+- PyYAML < 5.4 — CVE-2020-14343 (unsafe loader) 
+- Requests 2.19.1 — GHSA-x84v-xcm2-53pg (cred leak via redirect) 
+- urllib3 1.24.1 — CVE-2019-11324 / CVE-2019-11236 (TLS verify & CRLF) 
+- libcurl 7.75.0–7.76.1 — CVE-2021-22901 (use-after-free) 

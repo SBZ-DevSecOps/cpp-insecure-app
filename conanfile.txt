@@ -1,0 +1,6 @@
+[requires]
+libcurl/7.76.1   # CVE-2021-22901: use-after-free (7.75.0–7.76.1)
+
+[generators]
+CMakeDeps
+CMakeToolchain
